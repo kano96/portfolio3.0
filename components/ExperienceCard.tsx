@@ -1,9 +1,16 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-const ExperienceCard = () => {
+type Props = {
+  title: string;
+  subtitle: string;
+  rangeDate: string;
+  bulletPoints: string[];
+};
+
+const ExperienceCard = (props: Props) => {
   return (
-    <article className="flex flex-col rounded-lg items-center space-y-7 flex-shrink-0 w-[500px] md:w-[600px] snap-center bg-[#292929] p-10 hover:opacity-100 opacity-40 cursor-pointer transition-opacity duration-200">
+    <article className="flex flex-col rounded-lg items-center space-y-7 flex-shrink-0 w-[500px] md:w-[600px] snap-center bg-[#292929] p-10 hover:opacity-100 opacity-40 cursor-pointer transition-opacity duration-200 overflow-hidden">
       <motion.img
         initial={{ y: -100, opacity: 0 }}
         transition={{ duration: 1.2 }}
@@ -14,8 +21,8 @@ const ExperienceCard = () => {
         alt="devsu-img"
       />
       <div className="px-0 md:px-10">
-        <h4 className="text-4xl font-light">Software Developer</h4>
-        <p className="font-bold text-2xl mt-1">DEVSU</p>
+        <h4 className="text-4xl font-light">{props.title}</h4>
+        <p className="font-bold text-2xl mt-1">{props.subtitle}</p>
         <div className="flex space-x-2 my-2 ">
           <Image
             src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
@@ -42,20 +49,13 @@ const ExperienceCard = () => {
             height={40}
           />
         </div>
-        <p className="uppercase py-5 text-gray-300">January 2022 - Present</p>
+        <p className="uppercase py-5 text-gray-300">{props.rangeDate}</p>
         <ul className="list-disc space-y-4 ml-5 text-lg">
-          <li className="text-sm">
-            Built and was part of the design system (Go, AWS, NextJS,
-            MaterialUI) of the collections platform for “Prefectura de
-            Pichincha”, this platform helps the Government of Pichincha Province
-            (Quito - Ecuador) to collect taxes from millions of people in order
-            to maintain road infrastructure.
-          </li>
-          <li className="text-sm">
-            Implemented the payment gateway to obtain Property Certificates from
-            the Colombian government, developed the data synchronization between
-            DynamoDB and ElasticSearch using AWS Kinesis, NodeJS, and RxJS.
-          </li>
+          {props.bulletPoints.map((detail) => (
+            <li className="text-sm" key={detail}>
+              {detail}
+            </li>
+          ))}
         </ul>
       </div>
     </article>

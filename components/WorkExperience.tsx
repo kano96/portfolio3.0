@@ -13,7 +13,15 @@ const WorkExperience = () => {
         Experience
       </h3>
       <div className="w-full flex p-10 space-x-4 snap-x overflow-x-scroll snap-mandatory md:justify-center">
-        <ExperienceCard />
+        <ExperienceCard
+          title="Software Developer"
+          subtitle="Devsu"
+          rangeDate="January 2022 - Present"
+          bulletPoints={[
+            "Built and was part of the design system (Go, AWS, NextJS, MaterialUI) of the collections platform for “Prefectura de Pichincha”, this platform helps the Government of Pichincha Province (Quito - Ecuador) to collect taxes from millions of people in order to maintain road infrastructure.",
+            "Implemented the payment gateway to obtain Property Certificates from the Colombian government, developed the data synchronization between DynamoDB and ElasticSearch using AWS Kinesis, NodeJS, and RxJS.",
+          ]}
+        />
       </div>
     </motion.div>
   );
