@@ -12,7 +12,7 @@ const WorkExperience = () => {
       <h3 className="uppercase absolute top-24 tracking-[20px] text-gray-500 text-2xl">
         Experience
       </h3>
-      <div className="w-full flex p-10 space-x-4 snap-x overflow-x-scroll snap-mandatory md:justify-center">
+      <div className="w-full flex p-10 space-x-4 snap-x overflow-x-scroll snap-mandatory md:justify-center scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80">
         <ExperienceCard
           title="Software Developer"
           subtitle="Devsu"
