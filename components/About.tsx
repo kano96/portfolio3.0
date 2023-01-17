@@ -1,7 +1,12 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { PageInfo } from "../typings";
 
-const About = () => {
+type Props = {
+  pageInfo: PageInfo;
+};
+
+const About = ({ pageInfo }: Props) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -27,20 +32,14 @@ const About = () => {
           background
         </h4>
         <p className="text-base md:text-lg">
-          I am a software developer. I have solid front-end knowledge of React,
-          Redux, Typescript, NextJS and Jest. Experienced in backend
-          technologies including microservices architectures, Go, Express, and
-          NodeJS. Strong knowledge of AWS, AWS Certified Cloud Practitioner.
-          Driven for results while focusing on high code quality and
-          performance. I have been coding for over 2 years now. As a Full Stack
-          Developer I have worked with large corporations like{" "}
-          <Link
-            href="https://www.linkedin.com/company/kushki/"
-            target="_blank"
-            className="underline"
-          >
-            Kushki.
-          </Link>
+          {pageInfo?.backgroundInformation ||
+            `I am Kevin Torres. I am a software developer. I have solid front-end
+          knowledge of React, Redux, Typescript, NextJS and Jest. Experienced in
+          backend technologies including microservices architectures, Go,
+          Express, and NodeJS. Strong knowledge of AWS, AWS Certified Cloud
+          Practitioner. Driven for results while focusing on high code quality
+          and performance. I have been coding for over 2 years now. As a Full
+          Stack Developer I have worked with large corporations like Kushki`}
         </p>
       </div>
     </motion.div>

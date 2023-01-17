@@ -33,6 +33,12 @@ const nextConfig = {
         port: "",
         pathname: "/dhbyo6yxl/image/upload/v1673560342/**",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+        port: "",
+        pathname: "/images/navogkyl/production/**",
+      },
     ],
   },
 };

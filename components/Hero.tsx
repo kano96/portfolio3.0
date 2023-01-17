@@ -3,12 +3,17 @@ import BackgroundCircles from "./BackgroundCircles";
 import Image from "next/image";
 import profilePic from "../public/profile-pic.jpeg";
 import Link from "next/link";
+import { PageInfo } from "../typings";
 
-const Hero = () => {
+type Props = {
+  pageInfo: PageInfo;
+};
+
+const Hero = ({ pageInfo }: Props) => {
   const [text, count] = useTypewriter({
     words: [
-      "My name is Kevin Torres",
-      "I am a Software Developer",
+      `My name is ${pageInfo?.name}`,
+      `I am a ${pageInfo?.role}`,
       "Who loves JavaScript.",
     ],
     loop: true,

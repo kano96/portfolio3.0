@@ -8,8 +8,31 @@ import Projects from "../components/Projects";
 import ContactMe from "../components/ContactMe";
 import Link from "next/link";
 import { ArrowUpCircleIcon } from "@heroicons/react/24/solid";
+import { GetStaticProps } from "next";
+import { Experience, PageInfo, Project, Skill, Social } from "../typings";
+import {
+  fetchExperience,
+  fetchPageInfo,
+  fetchProjects,
+  fetchSkills,
+  fetchSocials,
+} from "../utils/fetchData";
 
-export default function Home() {
+type Props = {
+  pageInfo: PageInfo;
+  experience: Experience[];
+  skills: Skill[];
+  projects: Project[];
+  socials: Social[];
+};
+
+export default function Home({
+  pageInfo,
+  experience,
+  skills,
+  projects,
+  socials,
+}: Props) {
   return (
     <div className="bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80">
       <Head>
@@ -19,14 +42,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header />
+      <Header socials={socials} />
 
       <section id="hero" className="snap-center">
-        <Hero />
+        <Hero pageInfo={pageInfo} />
       </section>
 
       <section id="about" className="snap-center">
-        <About />
+        <About pageInfo={pageInfo} />
       </section>
 
       <section id="experience" className="snap-center">
@@ -55,3 +78,22 @@ export default function Home() {
     </div>
   );
 }
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const pageInfo: PageInfo = await fetchPageInfo();
+  const experience: Experience[] = await fetchExperience();
+  const skills: Skill[] = await fetchSkills();
+  const projects: Project[] = await fetchProjects();
+  const socials: Social[] = await fetchSocials();
+
+  return {
+    props: {
+      pageInfo,
+      experience,
+      skills,
+      projects,
+      socials,
+    },
+    revalidate: 21600,
+  };
+};
