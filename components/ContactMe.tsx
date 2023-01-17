@@ -3,6 +3,7 @@ import { PhoneIcon, MapPinIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
+import { PageInfo } from "../typings";
 
 type Inputs = {
   name: string;
@@ -11,7 +12,11 @@ type Inputs = {
   message: string;
 };
 
-const ContactMe = () => {
+type Props = {
+  pageInfo: PageInfo;
+};
+
+const ContactMe = ({ pageInfo }: Props) => {
   const { register, reset, handleSubmit } = useForm<Inputs>();
   const [messageSent, setMessageSent] = useState(false);
   const onSubmit: SubmitHandler<Inputs> = (formData) => {
@@ -46,15 +51,15 @@ const ContactMe = () => {
         <div className="space-y-10">
           <div className="flex items-center space-x-5 justify-center">
             <PhoneIcon className="text-[#F7AB0A] h-7 w-7 animate-pulse" />
-            <p className="text-2xl">+593 987515576</p>
+            <p className="text-2xl">{pageInfo.phoneNumber}</p>
           </div>
           <div className="flex items-center space-x-5 justify-center">
             <EnvelopeIcon className="text-[#F7AB0A] h-7 w-7 animate-pulse" />
-            <p className="text-2xl">kevintorresi1996@gmail.com</p>
+            <p className="text-2xl">{pageInfo.email}</p>
           </div>
           <div className="flex items-center space-x-5 justify-center">
             <MapPinIcon className="text-[#F7AB0A] h-7 w-7 animate-pulse" />
-            <p className="text-2xl">Quito, Ecuador</p>
+            <p className="text-2xl">{pageInfo.address}</p>
           </div>
         </div>
 

@@ -65,7 +65,7 @@ export default function Home({
       </section>
 
       <section id="contact" className="snap-start">
-        <ContactMe />
+        <ContactMe pageInfo={pageInfo} />
       </section>
 
       <footer className="sticky bottom-5 w-full ">
