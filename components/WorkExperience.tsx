@@ -1,7 +1,12 @@
 import { motion } from "framer-motion";
+import { Experience } from "../typings";
 import ExperienceCard from "./ExperienceCard";
 
-const WorkExperience = () => {
+type Props = {
+  experience: Experience[];
+};
+
+const WorkExperience = ({ experience }: Props) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -13,15 +18,9 @@ const WorkExperience = () => {
         Experience
       </h3>
       <div className="w-full flex p-10 space-x-4 snap-x overflow-x-scroll snap-mandatory md:justify-center scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80">
-        <ExperienceCard
-          title="Software Developer"
-          subtitle="Devsu"
-          rangeDate="January 2022 - Present"
-          bulletPoints={[
-            "Built and was part of the design system (Go, AWS, NextJS, MaterialUI) of the collections platform for “Prefectura de Pichincha”, this platform helps the Government of Pichincha Province (Quito - Ecuador) to collect taxes from millions of people in order to maintain road infrastructure.",
-            "Implemented the payment gateway to obtain Property Certificates from the Colombian government, developed the data synchronization between DynamoDB and ElasticSearch using AWS Kinesis, NodeJS, and RxJS.",
-          ]}
-        />
+        {experience?.map((item) => (
+          <ExperienceCard key={item._id} experience={item} />
+        ))}
       </div>
     </motion.div>
   );

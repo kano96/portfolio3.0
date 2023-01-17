@@ -53,28 +53,28 @@ export default function Home({
       </section>
 
       <section id="experience" className="snap-center">
-        <WorkExperience />
+        <WorkExperience experience={experience} />
       </section>
 
       <section id="skills" className="snap-start">
-        <Skills />
+        <Skills skills={skills} />
       </section>
 
       <section id="projects" className="snap-start">
-        <Projects />
+        <Projects projects={projects} />
       </section>
 
       <section id="contact" className="snap-start">
         <ContactMe />
       </section>
 
-      <Link href="#hero">
-        <footer className="sticky bottom-5 w-full cursor-pointer">
-          <div className="flex items-center justify-center">
+      <footer className="sticky bottom-5 w-full ">
+        <div className="flex items-center justify-center">
+          <Link href="#hero">
             <ArrowUpCircleIcon className="h-10 w-10 cursor-pointer" />
-          </div>
-        </footer>
-      </Link>
+          </Link>
+        </div>
+      </footer>
     </div>
   );
 }
